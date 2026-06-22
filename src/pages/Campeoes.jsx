@@ -20,7 +20,12 @@ export default function Campeoes() {
       ) : (
         <div className={styles.grid}>
           {champions.map((c) => (
-            <Link to={`/torneio/${c.id}`} className={`card ${styles.card}`} key={c.id}>
+            <Link
+              to={`/torneio/${c.id}`}
+              state={{ from: '/campeoes', fromLabel: 'Campeões' }}
+              className={`card ${styles.card}`}
+              key={c.id}
+            >
               <span className={styles.ava}>
                 <Trophy size={18} />
               </span>

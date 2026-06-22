@@ -23,7 +23,11 @@ export default function Resultados() {
             <article className={`card ${styles.result}`} key={t.id}>
               <header className={styles.head}>
                 <div>
-                  <Link to={`/torneio/${t.id}`} className={styles.name}>
+                  <Link
+                    to={`/torneio/${t.id}`}
+                    state={{ from: '/resultados', fromLabel: 'Resultados' }}
+                    className={styles.name}
+                  >
                     {t.name}
                   </Link>
                   <p className={styles.date}>{formatDate(t.startsAt)}</p>
@@ -52,7 +56,11 @@ export default function Resultados() {
                 />
               )}
 
-              <Link to={`/torneio/${t.id}`} className={styles.link}>
+              <Link
+                to={`/torneio/${t.id}`}
+                state={{ from: '/resultados', fromLabel: 'Resultados' }}
+                className={styles.link}
+              >
                 Ver resultado completo <ChevronRight size={15} />
               </Link>
             </article>

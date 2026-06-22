@@ -25,7 +25,7 @@ export const league = {
   },
 
   social: {
-    x: '#',
+    tiktok: '#',
     instagram: '#',
     twitch: '#',
     youtube: '#',

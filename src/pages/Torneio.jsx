@@ -1,10 +1,11 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
   Calendar, Clock, Users, Crosshair, PlayCircle, Trophy, Medal,
   Check, Network, ListOrdered, Twitch,
 } from 'lucide-react';
 import Countdown from '../components/Countdown';
 import StatusBadge from '../components/StatusBadge';
+import BackButton from '../components/BackButton';
 import { getTournament } from '../data/tournaments';
 import { formatDate, formatTime, formatPrize, formatPrizeAmount } from '../lib/format';
 import styles from './Torneio.module.css';
@@ -16,18 +17,20 @@ export default function Torneio() {
   if (!t) {
     return (
       <div className={`container ${styles.notFound}`}>
+        <header className={styles.topBar}>
+          <BackButton />
+        </header>
         <h1>Torneio não encontrado</h1>
-        <Link to="/campeonatos" className="btn-ghost">Ver campeonatos</Link>
       </div>
     );
   }
 
   return (
     <div className={`container ${styles.page}`}>
-      <p className={styles.crumb}>
-        <Link to="/campeonatos">Campeonatos</Link> / {t.name}
-      </p>
-      <StatusBadge status={t.status} />
+      <header className={styles.topBar}>
+        <StatusBadge status={t.status} />
+        <BackButton />
+      </header>
       <h1 className={styles.name}>{t.name}</h1>
       <Meta t={t} />
 

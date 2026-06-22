@@ -13,7 +13,11 @@ export default function TournamentCard({ tournament }) {
       : null;
 
   return (
-    <Link to={`/torneio/${t.id}`} className={`card ${styles.card}`}>
+    <Link
+      to={`/torneio/${t.id}`}
+      state={{ from: '/campeonatos', fromLabel: 'Campeonatos' }}
+      className={`card ${styles.card}`}
+    >
       <div className={styles.top}>
         <StatusBadge status={t.status} />
         <span className={styles.format}><Users size={12} /> {t.format}</span>

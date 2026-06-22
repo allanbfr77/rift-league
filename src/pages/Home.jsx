@@ -73,7 +73,11 @@ export default function Home() {
                 <Trophy size={15} /> {formatPrize(next.prize)}
                 <span className={styles.dim}> · {next.spots.filled}/{next.spots.total} vagas</span>
               </span>
-              <Link to={`/torneio/${next.id}`} className="btn-action">
+              <Link
+                to={`/torneio/${next.id}`}
+                state={{ from: '/', fromLabel: 'Início' }}
+                className="btn-action"
+              >
                 Inscrever-se
               </Link>
             </div>
@@ -103,7 +107,12 @@ export default function Home() {
         <p className="eyebrow">Campeões recentes</p>
         <div className={styles.champs}>
           {champions.map((c) => (
-            <Link to={`/torneio/${c.id}`} className={`card ${styles.champ}`} key={c.id}>
+            <Link
+              to={`/torneio/${c.id}`}
+              state={{ from: '/', fromLabel: 'Início' }}
+              className={`card ${styles.champ}`}
+              key={c.id}
+            >
               <span className={styles.ava}>
                 <Trophy size={16} />
               </span>

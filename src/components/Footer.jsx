@@ -1,5 +1,6 @@
-import { Twitter, Instagram, Twitch, Youtube } from 'lucide-react';
+import { Instagram, Twitch, Youtube } from 'lucide-react';
 import BrandMark from './BrandMark';
+import TikTokIcon from './TikTokIcon';
 import { league } from '../data/league';
 import styles from './Footer.module.css';
 
@@ -20,7 +21,7 @@ export default function Footer() {
           </p>
         </div>
         <div className={styles.social}>
-          <a href={league.social.x} aria-label="X"><Twitter size={18} /></a>
+          <a href={league.social.tiktok} aria-label="TikTok"><TikTokIcon size={18} /></a>
           <a href={league.social.instagram} aria-label="Instagram"><Instagram size={18} /></a>
           <a href={league.social.twitch} aria-label="Twitch"><Twitch size={18} /></a>
           <a href={league.social.youtube} aria-label="YouTube"><Youtube size={18} /></a>
