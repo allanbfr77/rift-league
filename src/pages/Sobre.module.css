@@ -99,6 +99,11 @@
 }
 
 .members li {
+  list-style: none;
+}
+
+.memberBadge {
+  display: inline-block;
   font-size: 13px;
   font-weight: 500;
   color: #e3dbff;
@@ -106,6 +111,14 @@
   border-radius: 999px;
   background: rgba(25, 227, 214, 0.1);
   border: 1px solid rgba(25, 227, 214, 0.25);
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.memberBadge:hover {
+  color: #fff;
+  background: rgba(25, 227, 214, 0.18);
+  border-color: rgba(25, 227, 214, 0.45);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 520px) {
@@ -137,7 +150,7 @@
 }
 
 @media (max-width: 380px) {
-  .members li {
+  .memberBadge {
     font-size: 12px;
     padding: 5px 10px;
   }

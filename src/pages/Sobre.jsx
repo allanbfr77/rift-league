@@ -1,7 +1,11 @@
 import { ArrowRight } from 'lucide-react';
 import styles from './Sobre.module.css';
 
-const TEAM = ['@REGISᵀᶦᵏᵗᵒᵏ', '@ΞX Lakaah ッ', '@isa'];
+const TEAM = [
+  { label: '@REGISᵀᶦᵏᵗᵒᵏ', url: 'https://www.tiktok.com/@regis.pqd' },
+  { label: '@ΞX Lakaah ッ', url: 'https://www.tiktok.com/@lakaah' },
+  { label: '@isa', url: 'https://www.tiktok.com/@isa6x_' },
+];
 
 export default function Sobre() {
   return (
@@ -43,8 +47,17 @@ export default function Sobre() {
           <p className={styles.teamLabel}>Atenciosamente,</p>
           <p className={styles.teamName}>Equipe Rift League</p>
           <ul className={styles.members}>
-            {TEAM.map((handle) => (
-              <li key={handle}>{handle}</li>
+            {TEAM.map((member) => (
+              <li key={member.url}>
+                <a
+                  href={member.url}
+                  className={styles.memberBadge}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {member.label}
+                </a>
+              </li>
             ))}
           </ul>
         </footer>
