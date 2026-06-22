@@ -14,10 +14,12 @@ export default function Ticker() {
 
   const items = [];
   if (live) items.push({ live: true, text: `Ao vivo agora — ${live.name}` });
-  if (next)
-    items.push({
-      text: `Próximo: ${next.name} · ${next.spots.filled}/${next.spots.total} vagas`,
-    });
+  if (next) {
+    const spotsText = next.spots
+      ? `${next.spots.filled}/${next.spots.total} vagas`
+      : next.spotsLabel ?? 'inscrições abertas';
+    items.push({ text: `Próximo: ${next.name} · ${spotsText}` });
+  }
   if (next) items.push({ text: `Premiação ${formatPrize(next.prize)}` });
   if (champ) items.push({ text: `Último campeão: ${champ.team} — ${champ.name}` });
   items.push({ text: 'Inscrições abertas toda semana' });

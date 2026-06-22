@@ -152,7 +152,14 @@ img, svg { display: block; }
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: none;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* cards navegáveis (Link / button) */
+a.card,
+button.card {
+  cursor: pointer;
 }
 
 @media (max-width: 680px) {
@@ -219,13 +226,15 @@ img, svg { display: block; }
     50%      { box-shadow: 0 0 30px rgba(25, 227, 214, 0.5); }
   }
 
-  /* cards interativos ganham elevação + borda viva no hover */
+  /* cards navegáveis: elevação + borda ciano + glow roxo no hover */
   @media (hover: hover) {
     a.card:hover,
     button.card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(123, 92, 255, 0.55);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transform: translateY(-6px);
+      border-color: rgba(34, 211, 238, 0.5);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(123, 92, 255, 0.25);
     }
   }
 }

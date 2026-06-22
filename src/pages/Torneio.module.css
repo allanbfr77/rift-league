@@ -33,6 +33,21 @@
   margin: 0 0 8px;
 }
 
+.organizers {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pulse);
+  margin: 0 0 6px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cfcbe0;
+  margin: 0 0 10px;
+}
+
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +72,34 @@
 .spotsNum { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: #fff; }
 .bar { height: 7px; background: var(--ink); border-radius: 999px; overflow: hidden; margin-bottom: 16px; }
 .barFill { height: 100%; background: var(--violet); border-radius: 999px; }
+.spotsLimited {
+  font-size: 13px;
+  color: var(--pulse);
+  text-align: center;
+  margin: 16px 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 .fullBtn { width: 100%; }
+
+.sponsors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.sponsor {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
 
 .infoGrid {
   display: grid;
@@ -172,6 +214,18 @@
 .champPrizeBox { text-align: right; }
 .champPrize { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: #fff; }
 .paid { font-size: 12px; color: #cfffe9; margin-top: 2px; display: inline-flex; align-items: center; gap: 3px; }
+
+.roundWinnersBlock {
+  margin-bottom: 8px;
+}
+
+.accumulatedBlock {
+  margin-top: 28px;
+}
+
+.accumulatedBlock :global(.eyebrow) {
+  margin-bottom: 16px;
+}
 
 .fnRow {
   display: grid;

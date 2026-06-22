@@ -7,7 +7,7 @@ import Countdown from '../components/Countdown';
 import StatusBadge from '../components/StatusBadge';
 import BackButton from '../components/BackButton';
 import { getTournament } from '../data/tournaments';
-import { formatDate, formatTime, formatPrize, formatPrizeAmount } from '../lib/format';
+import { formatDate, formatTime, formatPrize, formatPrizeAmount, formatBRL } from '../lib/format';
 import styles from './Torneio.module.css';
 
 export default function Torneio() {
@@ -32,6 +32,10 @@ export default function Torneio() {
         <BackButton />
       </header>
       <h1 className={styles.name}>{t.name}</h1>
+      {t.organizers?.length > 0 && (
+        <p className={styles.organizers}>{t.organizers.join(' × ')}</p>
+      )}
+      {t.description && <p className={styles.description}>{t.description}</p>}
       <Meta t={t} />
 
       {t.status === 'open' && <OpenState t={t} />}
@@ -66,24 +70,35 @@ function Meta({ t }) {
 
 /* ---------------- OPEN ---------------- */
 function OpenState({ t }) {
-  const pct = Math.round((t.spots.filled / t.spots.total) * 100);
+  const hasSpots = t.spots?.total > 0;
+  const pct = hasSpots ? Math.round((t.spots.filled / t.spots.total) * 100) : 0;
   return (
     <>
       <div className={`card ${styles.signup}`}>
         <Countdown target={t.startsAt} />
-        <div className={styles.spotsRow}>
-          <span>Vagas preenchidas</span>
-          <span className={styles.spotsNum}>{t.spots.filled} / {t.spots.total}</span>
-        </div>
-        <div className={styles.bar}><div className={styles.barFill} style={{ width: `${pct}%` }} /></div>
-        <button className={`btn-action ${styles.fullBtn}`}>Inscrever-se — grátis</button>
+        {hasSpots ? (
+          <>
+            <div className={styles.spotsRow}>
+              <span>{t.spotsLabel ?? 'Vagas preenchidas'}</span>
+              <span className={styles.spotsNum}>{t.spots.filled} / {t.spots.total}</span>
+            </div>
+            <div className={styles.bar}><div className={styles.barFill} style={{ width: `${pct}%` }} /></div>
+          </>
+        ) : t.spotsLabel ? (
+          <p className={styles.spotsLimited}>{t.spotsLabel}</p>
+        ) : null}
+        <button className={`btn-action ${styles.fullBtn}`}>INSCREVER-SE</button>
       </div>
 
       <div className={styles.infoGrid}>
         <Info label="Premiação" value={formatPrize(t.prize)} />
-        <Info label="Formato" value={t.format} />
-        <Info label="Vagas" value={t.spots.total} />
-        <Info label="Check-in" value={t.checkIn} />
+        <Info label="Formato" value={`${t.format}${t.mode ? ` ${t.mode}` : ''}`} />
+        {t.registrationFee != null ? (
+          <Info label="Inscrição" value={`${formatBRL(t.registrationFee)} / dupla`} />
+        ) : t.checkIn ? (
+          <Info label="Check-in" value={t.checkIn} />
+        ) : null}
+        <Info label="Vagas" value={t.spotsLabel ?? t.spots?.total ?? '—'} />
       </div>
 
       <div className={styles.cols}>
@@ -96,6 +111,17 @@ function OpenState({ t }) {
           <RuleList rules={t.rules} />
         </div>
       </div>
+
+      {t.sponsors?.length > 0 && (
+        <div className={styles.section}>
+          <p className="eyebrow">Patrocinadores oficiais</p>
+          <div className={styles.sponsors}>
+            {t.sponsors.map((name) => (
+              <span className={styles.sponsor} key={name}>{name}</span>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className={styles.section}>
         <p className="eyebrow">Chaveamento</p>
@@ -171,14 +197,16 @@ function FinishedState({ t }) {
       )}
 
       {t.roundWinners && (
-        <>
+        <div className={styles.roundWinnersBlock}>
           <p className="eyebrow">Vencedores por queda</p>
           <RoundWinnersList winners={t.roundWinners} perWin={t.prize.perWin} currency={t.prize.currency} />
-        </>
+        </div>
       )}
 
-      <p className="eyebrow">{t.roundWinners ? 'Premiação acumulada' : 'Classificação final'}</p>
-      <StandingsFinal rows={t.standings} defaultCurrency={t.prize.currency} />
+      <div className={t.roundWinners ? styles.accumulatedBlock : undefined}>
+        <p className="eyebrow">{t.roundWinners ? 'Premiação acumulada' : 'Classificação final'}</p>
+        <StandingsFinal rows={t.standings} defaultCurrency={t.prize.currency} />
+      </div>
 
       <div className={styles.finalBtns}>
         <button className="btn-ghost"><PlayCircle size={16} /> Assistir replay</button>
@@ -199,6 +227,19 @@ function Info({ label, value }) {
 }
 
 function PrizeList({ prize }) {
+  if (!prize.distribution?.length) {
+    return (
+      <div className={styles.prizeList}>
+        <div className={`card ${styles.prizeRow}`}>
+          <span className={styles.prizePlace}>
+            <Trophy size={15} className={styles.gold} /> Premiação total
+          </span>
+          <span className={styles.prizeWin}>{formatPrize(prize)}</span>
+        </div>
+      </div>
+    );
+  }
+
   const place = ['', '1º lugar', '2º lugar', '3º lugar'];
   return (
     <div className={styles.prizeList}>

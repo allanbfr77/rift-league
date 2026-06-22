@@ -7,11 +7,6 @@
 //   'finished' → encerrado (campeão + classificação final)
 // ============================================================
 
-// data do próximo torneio: relativa a agora, pra o cronômetro do
-// exemplo nunca nascer "morto". Em produção isto vem do banco/CMS.
-const inDays = (d, h = 0, m = 0) =>
-  new Date(Date.now() + (d * 86400 + h * 3600 + m * 60) * 1000).toISOString();
-
 export const tournaments = [
   {
     id: 'trocacao-solo',
@@ -20,7 +15,7 @@ export const tournaments = [
     format: 'Solo',
     mode: 'Trocação',
     region: 'BR',
-    startsAt: '2026-06-21T14:00:00-03:00',
+    startsAt: '2026-05-17T19:00:00-03:00',
     round: { current: 6, total: 6 },
     prize: {
       currency: 'vbucks',
@@ -62,7 +57,7 @@ export const tournaments = [
     format: 'Trio',
     mode: 'Zero Build',
     region: 'BR',
-    startsAt: '2026-06-06T14:00:00-03:00',
+    startsAt: '2026-05-30T19:00:00-03:00',
     checkIn: '13h30',
     spots: { filled: 13, total: 13 },
     round: { current: 5, total: 5 },
@@ -91,27 +86,26 @@ export const tournaments = [
     ],
   },
   {
-    id: 'proximo-torneio',
+    id: 'valentines-cup',
     name: 'Valentines Cup',
     status: 'open',
-    format: 'Trio',
-    mode: 'Zero Build',
+    format: 'Duo',
+    mode: 'Misto',
     region: 'BR',
-    startsAt: inDays(7, 14, 0),
-    checkIn: '19h30',
-    spots: { filled: 0, total: 16 },
-    prize: {
-      total: 800,
-      distribution: [
-        { place: 1, amount: 400 },
-        { place: 2, amount: 250 },
-        { place: 3, amount: 150 },
-      ],
-    },
+    startsAt: '2026-06-28T18:00:00-03:00',
+    organizers: ['Cherry Girls', 'Rift League'],
+    description:
+      'Campeonato de Dia dos Namorados — competitivo e divertido, em comemoração ao Dia dos Namorados.',
+    spotsLabel: 'Vagas limitadas',
+    spots: { filled: 15, total: 40 },
+    registrationFee: 10,
+    prize: { total: 400 },
+    sponsors: ['Cherry Girls', 'CDR', 'BX', 'PQD'],
     rules: [
-      'Modo Zero Build, servidores BR',
-      'Check-in obrigatório no Discord',
-      'Inscrições abertas no Discord',
+      'Modo Duo Misto, servidores BR',
+      'Inscrição de R$ 10 por dupla',
+      'Vagas limitadas — inscrições abertas no Discord',
+      'Parceria Cherry Girls × Rift League',
     ],
   },
 ];

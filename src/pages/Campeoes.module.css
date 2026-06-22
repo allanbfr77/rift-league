@@ -36,11 +36,6 @@
   align-items: flex-start;
   gap: 14px;
   padding: 18px 16px;
-  transition: background 0.15s ease;
-}
-
-.card:hover {
-  background: var(--surface-2);
 }
 
 .ava {

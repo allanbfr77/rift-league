@@ -19,7 +19,8 @@ const STAT_ICONS = {
 export default function Home() {
   const next = getNextOpen();
   const champions = getRecentChampions(3);
-  const pct = next ? Math.round((next.spots.filled / next.spots.total) * 100) : 0;
+  const hasSpots = next?.spots?.total > 0;
+  const pct = hasSpots ? Math.round((next.spots.filled / next.spots.total) * 100) : 0;
 
   // barra de vagas cresce de 0 → pct ao montar
   const [barReady, setBarReady] = useState(false);
@@ -58,27 +59,35 @@ export default function Home() {
 
             <Countdown target={next.startsAt} />
 
-            <div className={styles.spotsRow}>
-              <span>Vagas preenchidas</span>
-              <span className={styles.spotsNum}>
-                {next.spots.filled} / {next.spots.total}
-              </span>
-            </div>
-            <div className={styles.bar}>
-              <div className={styles.barFill} style={{ width: `${barReady ? pct : 0}%` }} />
-            </div>
+            {hasSpots ? (
+              <>
+                <div className={styles.spotsRow}>
+                  <span>{next.spotsLabel ?? 'Vagas preenchidas'}</span>
+                  <span className={styles.spotsNum}>
+                    {next.spots.filled} / {next.spots.total}
+                  </span>
+                </div>
+                <div className={styles.bar}>
+                  <div className={styles.barFill} style={{ width: `${barReady ? pct : 0}%` }} />
+                </div>
+              </>
+            ) : next.spotsLabel ? (
+              <p className={styles.spotsLimited}>{next.spotsLabel}</p>
+            ) : null}
 
             <div className={styles.nextFoot}>
               <span className={styles.prize}>
                 <Trophy size={15} /> {formatPrize(next.prize)}
-                <span className={styles.dim}> · {next.spots.filled}/{next.spots.total} vagas</span>
+                {hasSpots && (
+                  <span className={styles.dim}> · {next.spots.filled}/{next.spots.total} vagas</span>
+                )}
               </span>
               <Link
                 to={`/torneio/${next.id}`}
                 state={{ from: '/', fromLabel: 'Início' }}
                 className="btn-action"
               >
-                Inscrever-se
+                SAIBA MAIS
               </Link>
             </div>
           </div>
