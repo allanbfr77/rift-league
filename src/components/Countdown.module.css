@@ -1,0 +1,57 @@
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.box {
+  flex: 1;
+  background: var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 8px 4px;
+  text-align: center;
+}
+
+.num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--pulse);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .num { animation: tick 0.32s ease; }
+  @keyframes tick {
+    0%   { transform: translateY(-3px) scale(1.18); opacity: 0.55; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+}
+
+.label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-top: 3px;
+}
+
+@media (max-width: 380px) {
+  .row {
+    gap: 4px;
+  }
+
+  .box {
+    padding: 6px 2px;
+  }
+
+  .num {
+    font-size: 18px;
+  }
+
+  .label {
+    font-size: 9px;
+  }
+}

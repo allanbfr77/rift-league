@@ -1,0 +1,336 @@
+.nav {
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(16, 12, 29, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.navOpen {
+  border-bottom-color: transparent;
+  z-index: 10001;
+  background: var(--ink);
+  backdrop-filter: none;
+}
+
+.navOpen .inner {
+  z-index: 10002;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  gap: 16px;
+  position: relative;
+  z-index: 52;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.wm {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.07em;
+  color: #fff;
+}
+.wm span { color: var(--violet); }
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  font-size: 13px;
+  color: var(--steel);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--pulse);
+  transition: width 0.25s ease-out;
+}
+
+.link:not(.active):hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(25, 227, 214, 0.5);
+}
+
+.link:not(.active):hover::after {
+  width: 100%;
+}
+
+.active {
+  color: var(--mist);
+}
+
+.active::after {
+  width: 100%;
+}
+
+.active:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(25, 227, 214, 0.5);
+}
+
+.discord {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #5865f2;
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  color: var(--mist);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  transition: color 0.28s ease, background 0.28s ease;
+}
+
+.burger:hover {
+  background: var(--surface);
+}
+
+.burgerOpen {
+  color: var(--pulse);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.burgerIcons {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+}
+
+.menuIcon,
+.closeIcon {
+  grid-area: 1 / 1;
+  transition:
+    opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menuIcon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.closeIcon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.75);
+}
+
+.burgerOpen .menuIcon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.75);
+}
+
+.burgerOpen .closeIcon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* overlay fullscreen — portal no body */
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--ink);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.36s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobileOverlayVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.overlayDismiss {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: default;
+}
+
+.mobileNav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding:
+    calc(72px + env(safe-area-inset-top, 0px))
+    max(28px, env(safe-area-inset-right, 0px))
+    max(32px, env(safe-area-inset-bottom, 0px))
+    max(28px, env(safe-area-inset-left, 0px));
+  pointer-events: none;
+}
+
+.mobileNavInner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  pointer-events: auto;
+}
+
+.mobileLink {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 6.5vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.18s ease,
+    padding-left 0.18s ease;
+  transition-delay: calc(var(--i, 0) * 55ms + 80ms);
+}
+
+.mobileDiscord {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #5865f2;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 28px;
+  align-self: stretch;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.18s ease;
+  transition-delay: calc(var(--i, 0) * 55ms + 80ms);
+}
+
+.mobileOverlayVisible .mobileLink,
+.mobileOverlayVisible .mobileDiscord {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileLink:hover {
+  color: var(--pulse);
+  padding-left: 8px;
+}
+
+.mobileActive {
+  color: var(--pulse);
+}
+
+.mobileDiscord:hover {
+  filter: brightness(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileOverlay {
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+  }
+
+  .mobileLink,
+  .mobileDiscord {
+    transform: none;
+    transition: opacity 0.15s ease, color 0.15s ease;
+    transition-delay: 0ms;
+  }
+
+  .menuIcon,
+  .closeIcon {
+    transition: opacity 0.15s ease;
+    transform: none;
+  }
+
+  .burgerOpen .menuIcon,
+  .burgerOpen .closeIcon {
+    transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .links { display: none; }
+  .burger { display: inline-flex; }
+}
+
+@media (max-width: 380px) {
+  .inner {
+    height: 54px;
+    gap: 10px;
+  }
+
+  .wm {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  .brand {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .mobileLink {
+    padding: 14px 0;
+    font-size: 22px;
+  }
+
+  .mobileNav {
+    padding-top: calc(64px + env(safe-area-inset-top, 0px));
+  }
+}

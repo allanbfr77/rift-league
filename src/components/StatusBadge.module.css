@@ -1,0 +1,44 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: 999px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.open {
+  background: rgba(25, 227, 214, 0.14);
+  color: var(--pulse);
+}
+
+.live {
+  background: rgba(240, 69, 79, 0.16);
+  color: var(--live-soft);
+}
+
+.finished {
+  background: rgba(138, 134, 160, 0.18);
+  color: #b6b2c8;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .live .dot {
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+}

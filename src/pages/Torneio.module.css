@@ -1,0 +1,281 @@
+.page {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.notFound {
+  padding: 80px 0;
+  text-align: center;
+}
+.notFound h1 {
+  font-family: var(--font-display);
+  margin-bottom: 20px;
+}
+
+.crumb {
+  font-size: 12px;
+  color: var(--steel);
+  margin-bottom: 16px;
+}
+.crumb a { color: #cfcbe0; }
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 5vw, 32px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 14px 0 8px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--steel);
+  margin-bottom: 20px;
+}
+.meta span { display: inline-flex; align-items: center; gap: 6px; }
+.meta svg { color: var(--violet); }
+
+/* OPEN: signup */
+.signup { padding: 18px 20px; }
+.spotsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--steel);
+  margin: 16px 0 7px;
+}
+.spotsNum { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: #fff; }
+.bar { height: 7px; background: var(--ink); border-radius: 999px; overflow: hidden; margin-bottom: 16px; }
+.barFill { height: 100%; background: var(--violet); border-radius: 999px; }
+.fullBtn { width: 100%; }
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+.info { padding: 14px; }
+.infoLabel { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--steel); }
+.infoValue { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: #fff; margin-top: 4px; }
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.prizeList { display: flex; flex-direction: column; gap: 8px; }
+.prizeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+}
+.prizePlace { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #fff; }
+.gold { color: var(--pulse); }
+.silver { color: var(--steel); }
+.prizeWin { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--pulse); }
+.prizeAmt { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: #fff; }
+
+.rule {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: #cfcbe0;
+  line-height: 1.45;
+  margin-bottom: 9px;
+}
+.ruleCheck { color: var(--pulse); flex-shrink: 0; margin-top: 1px; }
+
+.section { margin-top: 24px; }
+.bracket {
+  background: var(--surface);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 32px 20px;
+  text-align: center;
+}
+.bracketIcon { color: var(--violet); margin: 0 auto; }
+.bracketTitle { font-size: 14px; color: #cfcbe0; margin: 10px 0 2px; }
+.bracketSub { font-size: 12px; color: var(--steel); }
+
+/* LIVE */
+.streamRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.streamInfo { display: flex; align-items: center; gap: 10px; }
+.twitch { color: #a970ff; }
+.streamTitle { font-size: 14px; color: #fff; font-weight: 500; }
+.streamSub { font-size: 12px; color: var(--steel); }
+
+.standHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 2px 12px;
+}
+.liveNote { font-size: 11px; color: var(--pulse); }
+
+.standings { display: flex; flex-direction: column; gap: 7px; }
+.lvRow {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.leader { background: rgba(123, 92, 255, 0.16); }
+.rank { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--steel); text-align: center; }
+.rankLeader { color: var(--pulse); }
+.team { font-size: 14px; font-weight: 500; color: #fff; }
+.subline { font-size: 12px; color: var(--steel); }
+.points { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: #fff; }
+.pointsLeader { color: var(--pulse); }
+.pointsMuted { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--steel); }
+.more { text-align: center; font-size: 12px; color: var(--steel); margin-top: 14px; }
+
+/* FINISHED */
+.champion {
+  background: var(--violet);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.champTrophy { color: #fff; flex-shrink: 0; }
+.champBody { flex: 1; }
+.champKicker { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #e5deff; }
+.champTeam { font-family: var(--font-display); font-weight: 700; font-size: 26px; color: #fff; margin-top: 2px; }
+.champStats { font-size: 13px; color: #e5deff; margin-top: 3px; }
+.champPrizeBox { text-align: right; }
+.champPrize { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: #fff; }
+.paid { font-size: 12px; color: #cfffe9; margin-top: 2px; display: inline-flex; align-items: center; gap: 3px; }
+
+.fnRow {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.finalBtns { display: flex; gap: 12px; margin-top: 18px; }
+.finalBtns button { flex: 1; }
+
+@media (max-width: 680px) {
+  .infoGrid { grid-template-columns: repeat(2, 1fr); }
+  .cols { grid-template-columns: 1fr; }
+  .champion { flex-wrap: wrap; }
+  .champPrizeBox { text-align: left; }
+  .finalBtns { flex-direction: column; }
+}
+
+@media (max-width: 520px) {
+  .name {
+    font-size: clamp(22px, 6vw, 26px);
+    line-height: 1.12;
+  }
+
+  .meta {
+    gap: 10px 14px;
+    font-size: 12px;
+  }
+
+  .signup {
+    padding: 16px 14px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .infoValue {
+    font-size: 16px;
+  }
+
+  .streamRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .streamRow :global(.btn-action) {
+    width: 100%;
+  }
+
+  .standHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .fnRow,
+  .lvRow {
+    grid-template-columns: 32px 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .team {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-size: 13px;
+  }
+
+  .fnRow .prizeWin,
+  .fnRow .prizeAmt,
+  .fnRow .pointsMuted,
+  .lvRow .points {
+    grid-column: 2;
+    justify-self: start;
+    font-size: 13px;
+  }
+
+  .champion {
+    padding: 18px 16px;
+    gap: 14px;
+  }
+
+  .champTeam {
+    font-size: clamp(20px, 6vw, 26px);
+    overflow-wrap: anywhere;
+  }
+
+  .champPrize {
+    font-size: clamp(20px, 5.5vw, 28px);
+  }
+
+  .champTrophy {
+    width: 34px;
+    height: 34px;
+  }
+
+  .prizeRow {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .bracket {
+    padding: 24px 14px;
+  }
+}

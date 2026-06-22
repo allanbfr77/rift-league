@@ -1,0 +1,150 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 5vw, 32px);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.sub {
+  font-size: 15px;
+  color: var(--steel);
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+.empty {
+  font-size: 14px;
+  color: var(--steel);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 16px;
+  transition: background 0.15s ease;
+}
+
+.card:hover {
+  background: var(--surface-2);
+}
+
+.ava {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(25, 227, 214, 0.16);
+  color: var(--pulse);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 2px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.players {
+  font-size: 13px;
+  color: #cfcbe0;
+  margin-top: 4px;
+}
+
+.tournament {
+  font-size: 13px;
+  color: var(--steel);
+  margin-top: 8px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--steel);
+  margin-top: 4px;
+}
+
+.format {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot {
+  opacity: 0.5;
+}
+
+.prize {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--pulse);
+  align-self: center;
+}
+
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    flex-wrap: wrap;
+  }
+
+  .prize {
+    width: 100%;
+    padding-left: 56px;
+  }
+}
+
+@media (max-width: 380px) {
+  .name {
+    font-size: 18px;
+  }
+
+  .name,
+  .players,
+  .tournament {
+    overflow-wrap: anywhere;
+  }
+
+  .prize {
+    padding-left: 0;
+    align-self: flex-start;
+  }
+}

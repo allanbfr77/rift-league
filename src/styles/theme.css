@@ -1,0 +1,231 @@
+/* ============================================================
+   RIFT LEAGUE — tokens da marca
+   Mude a identidade aqui e o site inteiro acompanha.
+   ============================================================ */
+:root {
+  /* cores */
+  --violet: #7b5cff;   /* identidade */
+  --void:   #4a37b5;   /* roxo profundo / apoio */
+  --pulse:  #19e3d6;   /* AÇÃO: botões, cronômetro, ao vivo */
+  --pulse-ink: #0a2e2b;
+  --ink:    #000000;   /* base / fundo (preto) */
+  --mist:   #f4f3f8;   /* texto sobre escuro */
+  --steel:  #8a86a0;   /* texto secundário */
+  --live:   #f0454f;   /* status ao vivo */
+  --live-soft: #ff6670;
+
+  --surface:   #181226;
+  --surface-2: #1e1834;
+  --line: rgba(255, 255, 255, 0.09);
+
+  /* tipografia */
+  --font-display: 'Rajdhani', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* forma */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --maxw: 1040px;
+
+  /* ritmo vertical (fonte única de espaçamento) */
+  --gap-section: 56px;   /* espaço entre seções de uma página */
+  --page-top: 48px;      /* respiro abaixo do cabeçalho */
+  --page-bottom: 80px;   /* respiro acima do rodapé */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--ink);
+  color: var(--mist);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+/* layout: footer sempre no rodapé, mesmo em páginas curtas */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#root > main {
+  flex: 1 0 auto;
+  padding-top: var(--page-top);
+  padding-bottom: var(--page-bottom);
+}
+
+/* ritmo vertical: toda página empilha suas seções com o mesmo gap.
+   flex gap não sofre margin-collapse — fonte única de espaçamento. */
+.page-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-section);
+}
+
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; }
+
+:focus-visible {
+  outline: 2px solid var(--pulse);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- utilitários compartilhados ---------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin: 0 0 14px;
+}
+
+.display { font-family: var(--font-display); }
+
+/* botão de ação (ciano = sempre ação) */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--pulse);
+  color: var(--pulse-ink);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  /* glow sutil: "isto pulsa, clique aqui" — sem mudar a cor */
+  box-shadow: 0 0 22px rgba(25, 227, 214, 0.32);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.btn-action:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 32px rgba(25, 227, 214, 0.55);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: var(--surface);
+  color: var(--mist);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 11px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* superfície de card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+@media (max-width: 680px) {
+  :root {
+    --gap-section: 40px;
+    --page-top: 32px;
+    --page-bottom: 56px;
+  }
+
+  .container {
+    padding-left: max(18px, env(safe-area-inset-left, 0px));
+    padding-right: max(18px, env(safe-area-inset-right, 0px));
+  }
+
+  .btn-action,
+  .btn-ghost {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --gap-section: 32px;
+    --page-top: 24px;
+    --page-bottom: 48px;
+  }
+
+  .container {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+}
+
+/* ============================================================
+   MOVIMENTO — vida de esports (respeita prefers-reduced-motion)
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  /* revela elementos conforme entram na viewport (via componente Reveal) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* CTA com brilho que pulsa de leve — "clique aqui" */
+  .btn-action {
+    animation: ctaPulse 2.6s ease-in-out infinite;
+  }
+  .btn-action:hover {
+    animation: none; /* no hover, o glow forte do :hover assume */
+  }
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 0 16px rgba(25, 227, 214, 0.25); }
+    50%      { box-shadow: 0 0 30px rgba(25, 227, 214, 0.5); }
+  }
+
+  /* cards interativos ganham elevação + borda viva no hover */
+  @media (hover: hover) {
+    a.card:hover,
+    button.card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(123, 92, 255, 0.55);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+  }
+}

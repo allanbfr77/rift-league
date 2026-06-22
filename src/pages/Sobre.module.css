@@ -1,0 +1,144 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 5vw, 34px);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.lead {
+  font-size: 16px;
+  color: var(--steel);
+  margin-bottom: 24px;
+}
+
+.article {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.article p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #cfcbe0;
+  margin: 0;
+}
+
+.rebrand {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(123, 92, 255, 0.14);
+  border: 1px solid rgba(123, 92, 255, 0.35);
+}
+
+.oldName {
+  font-size: 14px;
+  color: var(--steel);
+  text-decoration: line-through;
+  text-decoration-color: rgba(207, 203, 224, 0.45);
+}
+
+.arrow {
+  color: var(--pulse);
+  flex-shrink: 0;
+}
+
+.newName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.signoff {
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.signoff p {
+  margin-bottom: 6px;
+}
+
+.teamLabel {
+  color: var(--steel) !important;
+  font-size: 14px !important;
+  margin-top: 14px !important;
+}
+
+.teamName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px !important;
+  color: #fff !important;
+}
+
+.members {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.members li {
+  font-size: 13px;
+  font-weight: 500;
+  color: #e3dbff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(25, 227, 214, 0.1);
+  border: 1px solid rgba(25, 227, 214, 0.25);
+}
+
+@media (max-width: 520px) {
+  .rebrand {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+  }
+
+  .article {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .article p {
+    font-size: 14px;
+  }
+
+  .newName {
+    font-size: clamp(16px, 5vw, 20px);
+  }
+
+  .oldName {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 380px) {
+  .members li {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}

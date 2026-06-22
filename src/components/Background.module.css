@@ -1,0 +1,20 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;        /* fica atrás de todo o conteúdo */
+  overflow: hidden;
+  background: var(--ink); /* fallback enquanto a mídia carrega */
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* cobre a tela sem distorcer */
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  /* a cor/opacidade vem inline de league.background.overlay */
+}

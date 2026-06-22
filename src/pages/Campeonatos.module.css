@@ -1,0 +1,23 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 5vw, 32px);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 28px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 760px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; }
+  .title { margin-bottom: 20px; }
+}
