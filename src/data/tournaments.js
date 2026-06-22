@@ -92,7 +92,7 @@ export const tournaments = [
   },
   {
     id: 'proximo-torneio',
-    name: 'Próximo torneio',
+    name: 'Valentines Cup',
     status: 'open',
     format: 'Trio',
     mode: 'Zero Build',
